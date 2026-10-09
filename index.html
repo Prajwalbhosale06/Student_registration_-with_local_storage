@@ -1,0 +1,243 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Details Form</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #eef2ff;
+            padding: 30px 15px;
+        }
+
+        .container {
+            max-width: 750px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #3730a3;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            font-size: 18px;
+            color: #4338ca;
+            margin: 25px 0 15px;
+            border-bottom: 2px solid #e0e7ff;
+            padding-bottom: 8px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 7px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #cbd5e1;
+            border-radius: 7px;
+            outline: none;
+            font-size: 14px;
+        }
+
+        input:focus, select:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 4px #c7d2fe;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 7px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .submit-btn {
+            background: #4f46e5;
+            color: white;
+        }
+
+        .submit-btn:hover {
+            background: #3730a3;
+        }
+
+        .reset-btn {
+            background: #e5e7eb;
+            color: #333;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #ecfdf5;
+            border-radius: 8px;
+            color: #065f46;
+            display: none;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 550px) {
+            .container {
+                padding: 20px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Student Registration</h1>
+        <p class="subtitle">Enter student details and examination marks</p>
+
+        <form id="studentForm">
+
+            <h2>Personal Details</h2>
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name"
+                           placeholder="Enter full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="roll">Roll Number</label>
+                    <input type="text" id="roll"
+                           placeholder="Enter roll number" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email"
+                           placeholder="Enter email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone"
+                           placeholder="Enter phone number"
+                           pattern="[0-9]{10}"
+                           title="Enter a 10-digit phone number" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="class">Class</label>
+                    <select id="class" required>
+                        <option value="">Select class</option>
+                        <option>FY</option>
+                        <option>SY</option>
+                        <option>TY</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="division">Division</label>
+                    <select id="division" required>
+                        <option value="">Select division</option>
+                        <option>A</option>
+                        <option>B</option>
+                        <option>C</option>
+                    </select>
+                </div>
+            </div>
+
+            <h2>Subject Marks (Out of 100)</h2>
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="english">English</label>
+                    <input type="number" id="english"
+                           min="0" max="100" placeholder="0–100" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="maths">Mathematics</label>
+                    <input type="number" id="maths"
+                           min="0" max="100" placeholder="0–100" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="science">Science</label>
+                    <input type="number" id="science"
+                           min="0" max="100" placeholder="0–100" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="computer">Computer Science</label>
+                    <input type="number" id="computer"
+                           min="0" max="100" placeholder="0–100" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="history">History</label>
+                    <input type="number" id="history"
+                           min="0" max="100" placeholder="0–100" required>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button type="submit" id="btn" class="submit-btn">
+                    Submit Details
+                </button>
+
+                <button type="reset" class="reset-btn">
+                    Reset Form
+                </button>
+            </div>
+
+        </form>
+
+        <div id="result"></div>
+    </div>
+
+    <script src="index.js"></script>
+
+</body>
+</html>
