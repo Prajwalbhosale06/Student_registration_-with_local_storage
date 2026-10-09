@@ -4,6 +4,7 @@ const form = document.getElementById("studentForm");
 function validate(event) {
     event.preventDefault();
 
+    
     const student = {
         name: document.getElementById("name").value,
         email: document.getElementById("email").value,
@@ -19,6 +20,7 @@ function validate(event) {
         history: Number(document.getElementById("history").value)
     };
 
+   
     const marks = [
         student.english,
         student.maths,
@@ -27,19 +29,35 @@ function validate(event) {
         student.history
     ];
 
+    
+    const markIds = [
+        "english", "maths", "science", "computer", "history"
+    ];
+
+    if (markIds.some(id =>
+        document.getElementById(id).value.trim() === ""
+    )) {
+        alert("Please enter marks for all subjects.");
+        return;
+    }
+
+    
     if (marks.some(mark => mark < 0 || mark > 100)) {
         alert("Enter marks between 0 and 100.");
         return;
     }
 
+    
     const total = marks.reduce((sum, mark) => sum + mark, 0);
     const percentage = total / 5;
 
     console.log("Total Marks:", total);
     console.log("Percentage:", percentage + "%");
 
+    
     localStorage.setItem("studentData", JSON.stringify(student));
 
+    
     window.location.href = "res.html";
 }
 
